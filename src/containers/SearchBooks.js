@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchBooks } from "../redux/actions/actionFetchBooks";
 import {Link} from 'react-router-dom'
 import { AddBook } from "../redux/actions/actionAddBooks";
+import { toast } from "react-toastify";
 
 const SearchBooks = () => {
   const [title, setTitle] = useState("");
@@ -19,6 +20,7 @@ const SearchBooks = () => {
   const handleSave = (title, author) =>{
     const bookToSave = {title, author}
     dispatch(AddBook(bookToSave))
+    toast.info('Livre enregistre', {position: toast.POSITION.BOTTOM_RIGHT})
   }
 
   const displayFetchedBooks = state.isLoading ? (
